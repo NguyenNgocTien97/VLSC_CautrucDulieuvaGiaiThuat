@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
+//Author: Nguyen Ngoc Tien - 2500113793
 class Program
 {
     static void Main()
