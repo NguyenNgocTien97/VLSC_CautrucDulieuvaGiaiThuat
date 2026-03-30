@@ -1,2 +1,4 @@
 <Solution>
+  <Project Path="DSA_Session04_Basics/DSA_Session04_Basics.csproj" />
+  <Project Path="DSA_Session04_Sorting/DSA_Session04_Sorting.csproj" />
 </Solution>
