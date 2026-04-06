@@ -3,4 +3,6 @@
   <Project Path="DSA_Session04_Sorting/DSA_Session04_Sorting.csproj" />
   <Project Path="DSA_Session05_Basics/DSA_Session05_Basics.csproj" />
   <Project Path="DSA_Session05_Sortings/DSA_Session05_Sortings.csproj" />
+  <Project Path="DSA_Session06_Array/DSA_Session06_Array.csproj" />
+  <Project Path="DSA_Session06_Basics/DSA_Session06_Basics.csproj" />
 </Solution>
