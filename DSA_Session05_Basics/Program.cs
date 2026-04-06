@@ -4,6 +4,70 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        // Bài 1: Hoán đổi 2 số không dùng biến tạm (Toán học)
+        // Gợi ý: Dùng phép cộng trừ
+        // Người dùng có thể nhập 2 số từ bàn phím và sau đó thực hiện hoán đổi
+        Console.WriteLine("Bài 1: Hoán đổi 2 số không dùng biến tạm");
+        Console.Write("Nhập số a: ");
+        // Đọc chuỗi nhập vào từ bàn phím và lưu vào biến inputA
+        String inputA = Console.ReadLine();
+        // Sử dụng int.Tryparse để chuyển đổi chuỗi nhập vào thành số nguyên,
+        // nếu không hợp lệ thì yêu cầu người dùng nhập lại
+        int a;
+        while (!int.TryParse(inputA, out a))
+        {
+            Console.Write("Số a không hợp lệ. Vui lòng nhập lại: ");
+            inputA = Console.ReadLine();
+        }
+        Console.Write("Nhập số b: ");
+        // Đọc chuỗi nhập vào từ bàn phím và lưu ba==vào biến inputB
+        string intputB = Console.ReadLine();
+        // Sử dụng int.Tryparse để chuyển đổi chuỗi nhập vào thành số nguyên,
+        // nếu không hợp lệ thì yêu cầu người dùng nhập lại
+        int b;
+        while (!int.TryParse(intputB, out b))
+        {
+            Console.Write("");
+            intputB = Console.ReadLine();
+        }
+        a = a + b; // Cộng a và b, kết quả lưu vào a
+        b = a - b; // Lấy giá trị mới của a trừ đi b
+        // kết quả lưu vào b (b giờ là của giá trị ban đầu của a)
+        a = a - b; // lấy giá trị mới của a trừ đi b
+        // kết quả lưu vào a (a giờ là giá trị ban đầu của a)
+        Console.WriteLine($"a = {a}, b = {b}");
+        Console.WriteLine("===============================");
+        Console.WriteLine("Bài 2: Vẽ hình vuông dấu sao (n x n)");
+        // người dùng có thể nhập kích thước n từ bàn phím
+        // và sau đó in ra hình vuông tương ứng 
+        Console.WriteLine("Nhập kích thước n của hình vuông: ");
+        string inputN = Console.ReadLine();
+        int n;// Sử dụng int.Tryparse để chuyển đổi chuỗi nhập vào thành số nguyên, 
+        // nếu không hợp lệ thì yêu cầu người dùng nhập lại
+        // n > 0
+        while (!int.TryParse(inputN, out n) || n <= 0)
+        {
+            Console.Write("");
+            inputN = Console.ReadLine();
+        }
+        // Dùng hai vòng lặp for để in ra hình vuông dấu sao
+        for (int i = 0; i < n; i++)
+        { // Duyệt hàng
+            for (int j = 0; j < n; j++)
+            { // Duyệt cột
+                Console.Write("* ");
+            }
+            Console.WriteLine(); // xuống dòng sau mỗi dòng
+        }
+         Console.WriteLine("===============================");
+         Console.WriteLine();
+         for (int i = 2; i <= 9; i++)
+        {
+            Console.WriteLine();
+            for (int j = 1; j <= 10; j++)
+            {
+                Console.WriteLine($"{i} x {j} = {i * j}");
+            }
+        }
     }
 }
