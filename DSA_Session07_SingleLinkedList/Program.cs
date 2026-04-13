@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 //Author: Nguyễn Ngọc Tiến - 2500113793
 namespace DSA_Session07_SingleLinkedList
 {
@@ -62,6 +63,84 @@ namespace DSA_Session07_SingleLinkedList
             }
             Console.WriteLine("null"); // Kết thúc danh sách
         }
+            // 8.1 Viết hàm đến và trả về tổng số lượng Node đang có trong danh sách
+        public int CountNodes()
+        {
+            int count = 0; // Biến đếm số lượng Node
+            Node current = head; // Bắt đầu từ head
+            while (current != null)// Duyệt qua danh sách
+            {
+            count++; // Tăng biến đếm khi gặp một node
+            current = current.Next; // Đi tiếp đến node tiếp theo
+            }
+            return count; // trả về số lượng node
+        }
+
+        // 8.2 Tìm xem một số target có tồn tại trong danh sách hay không.
+        // (Gợi ý : Trả về true và false)
+
+        public bool SearchNode(int target)
+        {
+            Node current = head;
+            while (current != null)
+            {
+                if (current.Data == target)
+                {
+                    return true;
+                }
+                current = current.Next;
+            }
+            return false;
+        }
+
+        // 8.3 Xóa phần tử ở đầu danh sách. Gợi ý cực kì đơn giản,
+        // chỉ cần cho Head = Head.Next;. kiểm tra kỹ lưỡng hợp danh sách rỗng
+        public void DeleteFirst()
+        {
+            if (head != null)
+            {
+                head = head.Next;
+            }
+        }
+
+        //8.4 xóa Node đầu tiên có data bằng với giá trị value
+        public void DeleteByValue(int value)
+        {
+            if (head == null)
+            {
+                return;
+            }
+            if (head.Data == value)
+            {
+                head = head.Next;
+                return;
+            }
+            Node current = head;
+            while (current.Next != null)
+            {
+                if (current.Next.Data == value)
+                {
+                    current.Next = current.Next.Next;
+                    return;
+                }
+                current = current.Next;
+            }
+        }
+
+        //8.5 Đảo ngược toàn bộ danh sách liên kết mà không được sử dụng thêm mảng phụ
+        public void ReverseList()
+        {
+            Node prev = null;
+            Node current = head;
+        while (current != null)
+            {
+                Node next = current.Next;
+                current!.Next = prev;
+                prev = current;
+                current = next;
+            }
+            head = prev;
+        }
     }
 
     // 5. CHƯƠNG TRÌNH CHÍNH: TEST DANH SÁCH LIÊN KẾT ĐƠN
@@ -83,7 +162,12 @@ namespace DSA_Session07_SingleLinkedList
                 Console.WriteLine("1. Thêm mắt xích vào cuối danh sách");
                 Console.WriteLine("2. In ra danh sách hiện tại");
                 Console.WriteLine("3. Xoá danh sách");
-                Console.WriteLine("4. Thoát");
+                Console.WriteLine("4. Đảo ngược danh sách");
+                Console.WriteLine("5. Đếm số lượng Node trong danh sách");
+                Console.WriteLine("6. Tìm kiếm một giá trị trong danh sách");
+                Console.WriteLine("7. Xóa Node đầu tiên");
+                Console.WriteLine("8. Xóa node có giá trị cụ thể");
+                Console.WriteLine("9. Thoát");
 
                 Console.Write("\nLựa chọn của bạn: ");
                 string choice = Console.ReadLine();
@@ -111,7 +195,46 @@ namespace DSA_Session07_SingleLinkedList
                         Console.WriteLine("Danh sách đã được xoá.");
                         break;
 
-                    case "4": // Thoát khỏi chương trình
+                    case "4": // đảo ngược danh sách
+                        list.ReverseList();
+                        Console.WriteLine("Danh sách đã được đảo ngược.");
+                        list.PrintList(); // in ra danh sách sau khi đảo ngược
+                        break;
+
+                    case "5": // đếm số lượng Node trong danh sách
+                        int count = list.CountNodes();
+                        Console.WriteLine($"Số lượng Node trong danh sách: {count}");
+                        break;
+
+                    case "6": // tìm kiếm một giá trị trong danh sách
+                        Console.Write("Nhập giá trị cần tìm: ");
+                        int searchData = int.Parse(Console.ReadLine());
+                        bool foundNode = list.SearchNode(searchData);
+                        if (foundNode)
+                        {
+                            Console.WriteLine($"Giá trị {searchData} được tìm thấy trong danh sách.");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Giá trị {searchData} không tồn tại trong danh sách.");
+                        }
+                        break;
+
+                    case "7": // xóa node đầu tiên 
+                        list.DeleteFirst();
+                        Console.WriteLine("Node đầu tiên được xóa: ");
+                        int deleteData = int.Parse(Console.ReadLine());
+                        list.DeleteByValue(deleteData);
+                        break;
+
+                    case "8": // xóa node có giá trị cụ thể
+                        Console.Write("Nhập giá trị cần xóa: ");
+                        int DeleteData = int.Parse(Console.ReadLine());
+                        list.DeleteByValue(DeleteData);
+                        Console.WriteLine($"Node giá trị {DeleteData} đã được xóa.");
+                        break;
+
+                    case "9": // Thoát khỏi chương trình
                         return; // Kết thúc hàm Main, thoát chương trình
 
                     default: // Nếu người dùng nhập lựa chọn không hợp lệ
