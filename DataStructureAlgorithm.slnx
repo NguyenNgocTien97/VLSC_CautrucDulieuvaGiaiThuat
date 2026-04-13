@@ -5,4 +5,6 @@
   <Project Path="DSA_Session05_Sortings/DSA_Session05_Sortings.csproj" />
   <Project Path="DSA_Session06_Array/DSA_Session06_Array.csproj" />
   <Project Path="DSA_Session06_Basics/DSA_Session06_Basics.csproj" />
+  <Project Path="DSA_Session07_Basics/DSA_Session07_Basics.csproj" />
+  <Project Path="DSA_Session07_SingleLinkedList/DSA_Session07_SingleLinkedList.csproj" />
 </Solution>
